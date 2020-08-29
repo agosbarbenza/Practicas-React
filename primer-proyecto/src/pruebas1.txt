@@ -1,0 +1,62 @@
+
+import React, { useState } from 'react';
+import './App.css';
+import Person from './Person/Person';
+
+const App = props =>{
+const [personsState, setPersonsState]/*permite acceder a los elementos del array*/ = useState({   // useState() devuelve un array con DOS elementos = 1° es el current state , 2° una función que permite updatear lo que está adentro del state. 
+  persons: [
+  {name: "Max",age: 28},
+  {name: "Agos", age: 27},
+  {name: "Juan", age: 27}
+],
+
+})
+
+const [otherOtherState, setOtherOtherState] = useState("Otro valor de referencia") 
+console.log(personsState, otherOtherState)
+
+const switchNameHandler = () =>{
+  setPersonsState({
+    persons:[
+    {name: "Maximilian", age: 28},
+    {name: "Manu", age: 29},
+    {name: "Stephanie", age: 27}
+    ]
+  })
+  }
+
+return (
+  <div className="App">
+    <h1>Hi, I'm a React app</h1>
+    <p>asdlasjdsadlkasdjlaskdjlasdsakdjaslkdjklasdjkasldskladjlsadjlasjdl
+    </p>
+    <button onClick={switchNameHandler}>Un botón, como vos</button>
+    <Person name={personsState.persons[0].name} age={personsState.persons[0].age }/>
+    <Person name={personsState.persons[1].name} age={personsState.persons[1].age } />
+    <Person name={personsState.persons[2].name} age={personsState.persons[2].age } />
+  </div>
+);
+}
+export default App;
+
+
+
+
+
+/*
+//////////////////////////////////PRIMERA PARTE
+import React, { Component } from 'react';
+import './App.css';
+import Person from './Person/Person';
+
+class App extends Component {
+  render() {
+    
+      return(
+    React.createElement("div", {className:"App"}, React.createElement("h1", null, "Hola MundoooO!!!")) Esta forma no se usa porque es un bolonqui cuando tenes muchos elementos, para evitar esto se importó React.
+    )
+  }
+}
+
+export default App;*/
