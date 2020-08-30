@@ -4,6 +4,20 @@ import styled from 'styled-components'
 import './styles/styles.css';
 import './styles/Person.css';
 
+//creo el componente del boton
+const StyledButton = styled.button`
+      background-color: ${props => props.alt ? 'red' : 'green'};
+      color: white;
+      border: 1px solid black;
+      padding: 8px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
+        color: black;
+
+`
+
 
 class App extends Component {
   state = {
@@ -63,7 +77,7 @@ class App extends Component {
 
   render() {
     let persons = null;
-    const style = {
+    /*const style = {
       backgroundColor: 'green',
       color: 'white',
       border: '1px solid black',
@@ -73,7 +87,7 @@ class App extends Component {
         backgroundColor: 'lightgreen',
         color: 'black'
       }
-    }
+    }*/
 
     if (this.state.showPersons) {
       persons = (<div>
@@ -87,11 +101,11 @@ class App extends Component {
         })}
       </div>)
 
-      style.backgroundColor = 'red';
+      /*style.backgroundColor = 'red';
       style[':hover'] = {
         backgroundColor: 'salmon',
         color: 'black'
-      }
+      }*/
     }
 
     let classes = [];
@@ -107,7 +121,7 @@ class App extends Component {
         <div className="App">
           <h1>Hi, I'm a React App</h1>
           <p className={classes.join(' ')}>This is really working!</p>
-          <button onClick={this.togglePersonsHandler} style={style}>Switch Name</button>
+          <StyledButton alt={this.state.showPersons} onClick={this.togglePersonsHandler}>Switch Name</StyledButton>
           {persons}
         </div>
     );
